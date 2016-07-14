@@ -1,0 +1,9 @@
+<?php
+session_start();
+if(!empty($_SESSION['AdminAutorise']))
+{
+$_SESSION['AdminAutorise']='';
+session_destroy();
+}
+header("Location:accueil.php");
+?>

@@ -1,0 +1,69 @@
+
+	body {
+    background: url('../images/textureGrey.png') 30px 0 repeat;
+    background-attachment: fixed; 
+}
+
+#loginbox {
+    margin-top: 200px;
+
+}
+#form-cnx, #form-mpoublie, #form-inscription{
+  border:2px solid rgba(255, 255, 255, 0.4);
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.72);
+  -moz-box-shadow:    0px 0px 30px 0px rgba(50, 50, 50, 0.72);
+  box-shadow:         0px 0px 30px 0px rgba(50, 50, 50, 0.72);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition: background 1s ease-in-out;
+  -moz-transition: background 1s ease-in-out;
+  -ms-transition: background 1s ease-in-out;
+  -o-transition: background 1s ease-in-out;
+  transition: background 1s ease-in-out;
+}
+
+#form > div {
+    margin-bottom: 25px;
+}
+
+
+.panel {    
+    background-color: #F1F1F1;
+}
+
+.panel-body {
+    padding-top: 30px;
+    background-color: rgba(2555,255,255,.3);
+}
+
+#particles {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;                        
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    z-index: -2;
+}
+
+
+.iconmelon,
+.im {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: block;
+  fill: #525151;
+}
+.iconmelon:after,
+.im:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
