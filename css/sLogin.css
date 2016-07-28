@@ -1,8 +1,36 @@
 
 	body {
     background: url('../images/textureGrey.png') 30px 0 repeat;
-    background-attachment: fixed; 
+        background-attachment: fixed;
 }
+
+    /*body{   background: linear-gradient(3deg, #89e04a, #2ee097, #f0ea4f, #ff9534, #3dcfed, #f22626, #efefef);*/
+    /*background-size: 1400% 1400%;*/
+    /*-webkit-animation: AnimationName 33s ease infinite;*/
+    /*-moz-animation: AnimationName 33s ease infinite;*/
+    /*-o-animation: AnimationName 33s ease infinite;*/
+    /*animation: AnimationName 33s ease infinite;*/
+    /*}*/
+    /*@-webkit-keyframes AnimationName {*/
+    /*0%{background-position:0% 88%}*/
+    /*50%{background-position:100% 13%}*/
+    /*100%{background-position:0% 88%}*/
+    /*}*/
+    /*@-moz-keyframes AnimationName {*/
+    /*0%{background-position:0% 88%}*/
+    /*50%{background-position:100% 13%}*/
+    /*100%{background-position:0% 88%}*/
+    /*}*/
+    /*@-o-keyframes AnimationName {*/
+    /*0%{background-position:0% 88%}*/
+    /*50%{background-position:100% 13%}*/
+    /*100%{background-position:0% 88%}*/
+    /*}*/
+    /*@keyframes AnimationName {*/
+    /*0%{background-position:0% 88%}*/
+    /*50%{background-position:100% 13%}*/
+    /*100%{background-position:0% 88%}*/
+    /*}*/
 
 #loginbox {
     margin-top: 200px;

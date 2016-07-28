@@ -22,11 +22,6 @@ class Admin
 
 
 	// function to escape data and strip tags
-	public function safestrip($string){
-       $string = strip_tags($string);
-       return $string;
-		}
-
 
 	public function login($emails,$mps)
 	{
@@ -71,6 +66,53 @@ class Admin
 			else
 			{
 				header("Location: accueil.php?errormail");
+				exit;
+			}
+		} catch (PDOException $exception) {
+			echo $exception->getMessage();
+		}
+	}
+
+	public function safestrip($string)
+	{
+		$string = strip_tags($string);
+		return $string;
+	}
+
+	public function loginMobile($emails, $mps)
+	{
+		$email = $this->safestrip($emails);
+		$mp = $this->safestrip($mps);
+
+
+		try {
+
+			$sql = 'SELECT * FROM tbl_users WHERE userEmail=:email';
+			$sth = $this->connexion->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+			$sth->execute(array(":email" => $email));
+			$userRow = $sth->fetch(PDO::FETCH_ASSOC);
+
+
+			if ($sth->rowCount() == 1) // si l'user existe 
+			{
+
+				if ($userRow['userStatus'] == "Y") // si il a activé son compte 
+				{
+					if ($userRow['userPass'] == $mp) // si le mp est correcte// if($userRow['userPass']==md5($mp)) // si le mp est correcte
+					{
+						return true;
+					} else // Mot de passe faut -> a gerer a part 
+					{
+						return false;
+						exit;
+					}
+				} else // Admin non verifié 
+				{
+					return false;
+					exit;
+				}
+			} else {
+				return false;
 				exit;
 			}		
 		}
