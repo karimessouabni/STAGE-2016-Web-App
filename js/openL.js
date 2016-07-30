@@ -1,11 +1,24 @@
 var features = new ol.Collection();
 var source = new ol.source.Vector({features: features});
+
+
+//create icon at new map center
+var iconFeature2 = new ol.Feature({
+    geometry: new ol.geom.Point(ol.proj.transform([-72.0704, 46.678], 'EPSG:4326',
+        'EPSG:3857')),
+});
+
+
+source.addFeature(iconFeature2);
+
+
+
 var vector = new ol.layer.Vector({
     source: source,
     style: new ol.style.Style({
 
         image: new ol.style.Icon({
-            anchor: [0.5, 66],
+            anchor: [0.5, 50],
             anchorXUnits: 'fraction',
             anchorYUnits: 'pixels',
             opacity: 0.90,
@@ -118,7 +131,7 @@ function addInteraction() {
         var lat = lonlat[1];
         document.getElementById('long').value = lon;
         document.getElementById('lat').value = lat;
-        console.log(lon + "lmjkmlk" + lat);
+        console.log(lon + " " + lat);
     });
 
     createHelpTooltip();
@@ -154,6 +167,14 @@ addInteraction();
 
 
 function drawMap() {
+    map.setTarget("map");
+    map.updateSize();
+
+
+}
+
+function drawMapEditForm() {
+    map.setTarget("map2");
     map.updateSize();
 }
 

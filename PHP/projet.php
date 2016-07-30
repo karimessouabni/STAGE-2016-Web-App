@@ -29,7 +29,7 @@ class Projet
     }
 
 
-    public function insertInto($identifiant, $intitule, $reference, $superficie, $objectif, $consistance, $cout, $maitre, $naturem, $taux, $commune, $situation, $intervention, $naturet, $statut, $convention, $remarques)
+    public function insertInto($identifiant, $intitule, $reference, $superficie, $objectif, $consistance, $cout, $maitre, $naturem, $taux, $commune, $situation, $intervention, $naturet, $statut, $convention, $remarques, $long, $lat)
     {
 
         $this->checkDupId($identifiant);
@@ -44,7 +44,10 @@ class Projet
         try {
 
             $stmt = $this->connexion->prepare("INSERT INTO projet(identifiant,intitule,reference,superficie,objectif,consistance,cout,maitre,naturem, taux,commune,situation,intervention,naturet,statut,convention,remarques, localisation) 
-				VALUES(:a, :b, :c, :d, :e, :f, :g, :h, :i, :j, :k, :l, :m, :n, :o, :p, :q, :r)");
+				VALUES(:a, :b, :c, :d, :e, :f, :g, :h, :i, :j, :k, :l, :m, :n, :o, :p, :q,  GeomFromText(:r))");
+
+            $location = 'POINT(' . $lat . ' ' . $long . ')';
+
             $stmt->bindparam(":a", $identifiant);
             $stmt->bindparam(":b", $intitule);
             $stmt->bindparam(":c", $reference);
@@ -62,9 +65,11 @@ class Projet
             $stmt->bindparam(":o", $statut);
             $stmt->bindparam(":p", $convention);
             $stmt->bindparam(":q", $remarques);
-            $stmt->bindparam(":r", "'POINT(25 12)',0");
+            $stmt->bindparam(":r", $location);
+
             $stmt->execute();
             return $stmt;
+
         } catch (PDOException $ex) {
             echo $ex->getMessage();
         }
@@ -95,7 +100,7 @@ class Projet
 
         // Test sur les champs requi -------> A adapter apres !!!
         if (empty ($identifiant) || empty ($intitule) || empty ($reference) || empty ($cout) || empty ($taux)) {
-            echo "les champs suivant ....... doivent etres saisis avant l'envoi !";
+            echo "Formulaire non rempli au complet !";
             exit;
         }
 
@@ -131,10 +136,8 @@ class Projet
 
     public function getAllProjects($limit, $offset, $sortParam, $orderType, $search)
     {
-
-
-        if ($search == null) $sql = 'SELECT * FROM projet ORDER BY ' . $sortParam . ' ' . $orderType . ' Limit :start, :limit ';
-        else  $sql = 'SELECT * FROM projet WHERE 
+        if ($search == null) $sql = 'SELECT  `identifiant`, `intitule`, `reference`, `superficie`, `objectif`, `consistance`, `cout`, `maitre`, `naturem`, `taux`, `commune`, `situation`, `intervention`, `naturet`, `statut`, `convention`, `remarques`, X(localisation), Y(localisation)   FROM projet ORDER BY ' . $sortParam . ' ' . $orderType . ' Limit :start, :limit ';
+        else  $sql = 'SELECT `identifiant`, `intitule`, `reference`, `superficie`, `objectif`, `consistance`, `cout`, `maitre`, `naturem`, `taux`, `commune`, `situation`, `intervention`, `naturet`, `statut`, `convention`, `remarques`, X(localisation), Y(localisation) FROM projet WHERE 
 				identifiant LIKE \'%' . $search . '%\' OR 
 			intitule LIKE \'%' . $search . '%\' OR
 			reference LIKE \'%' . $search . '%\' OR 
@@ -152,29 +155,21 @@ class Projet
 			statut LIKE \'%' . $search . '%\' OR 
 			convention LIKE \'%' . $search . '%\' OR 
 			remarques LIKE \'%' . $search . '%\'
-
 			ORDER BY ' . $sortParam . ' ' . $orderType . ' Limit :start, :limit  
 			';
-
         //else  $sql = 'SELECT * FROM projet ';
         // $sth = $this->connexion->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         // $returnValue=$sth->fetch(PDO::FETCH_ASSOC);
         $sth = $this->connexion->prepare($sql);
         $sth->bindParam(':start', $offset, PDO::PARAM_INT);
         $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
-
-
         $sth->execute();
         $returnValue = $sth->fetchAll(PDO::FETCH_ASSOC);
         // $returnValue=$sth->fetchAll();
-
-
         if ($sth->rowCount() > 0) // si l'user existe
         {
             return $returnValue;
-
         }
-
     }
 
 

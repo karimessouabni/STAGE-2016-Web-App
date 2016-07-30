@@ -1,0 +1,65 @@
+@media screen and (max-width: 320px) {
+    @viewport {
+        width: 320px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 959px) {
+    @viewport {
+        width: 768px;
+    }
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    background: url('../images/light_grey.png') top left repeat-x;
+    font-family: 'Open Sans', sans-serif;
+    background-attachment: fixed;
+
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 70px;
+    display: inline-block
+}
+
+.demo-long {
+    margin-top: 100px;
+    margin-bottom: 200px;
+}
+
+.imgprofile {
+    border-radius: 50%;
+    max-width: 100px !important;
+    width: 50%;
+    vertical-align: middle;
+    border: 0;
+}
+
+.dropdown-toggle {
+    cursor: auto;
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    height: 43px;
+    line-height: 20px;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 0px;
+    padding-top: 5px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    width: 82.890625px;
+}
+
+.navbar {
+    background-color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.9);
+
+}

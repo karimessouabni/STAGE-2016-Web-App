@@ -1,5 +1,4 @@
-$('document').ready(function()
-{ 
+$('document').ready(function() {
 
 
 
@@ -10,7 +9,7 @@ $('document').ready(function()
 
     /* validation  formulaire de connexion */
     $("#form").validate({
-     errorClass: "alert alert-danger", 
+        errorClass: "alert alert-danger",
      errorElement: "i",
     wrapper: "div",  // a wrapper around the error message
 
@@ -34,9 +33,9 @@ $('document').ready(function()
    },
    email: "Adresse email incorrecte ! ",
  },
- submitHandler: submitForm 
-});  
-    
+        submitHandler: submitForm
+    });
+
 
 
     /* validation  formulaire d'inscription */
@@ -44,7 +43,7 @@ $('document').ready(function()
 
 
     $("#form-ins").validate({
-     errorClass: "alert alert-danger", 
+        errorClass: "alert alert-danger",
      errorElement: "i",
     wrapper: "div",  // a wrapper around the error message
 
@@ -70,7 +69,7 @@ $('document').ready(function()
     emailconf:{
      equalTo : "#email",
    },
-   
+
  },
 
 
@@ -89,28 +88,20 @@ $('document').ready(function()
 },
 
 
-submitHandler: false 
-});  
+        submitHandler: false
+    });
     /* validation */
-    
-    
-
-
-
-
-
 
 
     /* validation  formulaire d'ajout de projet */
 
 
     $("#form-add-projet").validate({
-     errorClass: "alert alert-danger", 
+        errorClass: "alert alert-danger",
      errorElement: "i",
      wrapper: "div",  // a wrapper around the error message
 
-     rules:
-     { 
+     rules: {
        identifiant: {
         required: true,
       },
@@ -130,7 +121,7 @@ submitHandler: false
       number: true
     },
 
-   
+
    },
 
 
@@ -143,11 +134,11 @@ submitHandler: false
           },
 
 
-          submitHandler: submitFormAddProj 
-        });  
+        submitHandler: submitFormAddProj
+    });
 
 
-    
+
 
 
 
@@ -156,12 +147,11 @@ submitHandler: false
 
 
     $("#form-modify-projet").validate({
-     errorClass: "alert alert-danger", 
+        errorClass: "alert alert-danger",
      errorElement: "i",
      wrapper: "div",  // a wrapper around the error message
 
-     rules:
-     { 
+     rules: {
        identifiant: {
         required: true,
       },
@@ -197,8 +187,8 @@ submitHandler: false
           },
 
 
-          submitHandler: submitFormModifyProj 
-        });  
+        submitHandler: submitFormModifyProj
+    });
 
 
 
@@ -209,12 +199,12 @@ submitHandler: false
 
 
    //  $("#form-add-partenaire").validate({
-   //   errorClass: "alert alert-danger", 
+    //   errorClass: "alert alert-danger",
    //   errorElement: "i",
    //   wrapper: "div",  // a wrapper around the error message
 
    //   rules:
-   //   { 
+    //   {
    //     nom: {
    //      required: true,
    //    },
@@ -229,7 +219,7 @@ submitHandler: false
    //      number: true
    //    },
 
-   
+
    // },
 
 
@@ -241,8 +231,8 @@ submitHandler: false
    //        },
 
 
-   //        submitHandler: submitFormAddPartenaire 
-   //      });  
+    //        submitHandler: submitFormAddPartenaire
+    //      });
 
 
 
@@ -257,29 +247,26 @@ submitHandler: false
 
 
     /* login submit */
-    function submitForm()
-    {  
+    function submitForm() {
      var data = $("#form").serialize();
-     
+
      $.ajax({
 
        type : 'POST',
        url  : '../PHP/loginAjax.php',
        data : data,
-       beforeSend: function()
-       { 
+       beforeSend: function() {
         $("#error").fadeOut();
         $("#btn-connexion").html('<span class="glyphicon glyphicon-transfer"></span> &nbsp; Envoi ...');
       },
-      success :  function(response)
-      {      
+      success :  function(response) {
        if(response=="connected"){
         $("#btn-connexion").html('<span class="glyphicon glyphicon-transfer"></span>&nbsp; Connexion en cours ...');
         $("#imgload").html('<img src="../images/load.gif" style="padding-left: 278px !important;" />');
       setTimeout('window.location.href = "../PHP/home.php"; ',2000); // redirection vers Home
     }
     else{
-      $("#error").fadeIn(0, function(){     
+           $("#error").fadeIn(0, function () {
         $("#error").html('<div class="alert alert-danger"> <i class="glyphicon glyphicon-info-sign"></i> &nbsp; Email ou mot de passe erroné !</div>');
         $("#btn-connexion").html('<span class="glyphicon glyphicon-log-in"></span> &nbsp; Connexion');
       });
@@ -298,17 +285,15 @@ submitHandler: false
 
 
    /* Ajout d'un nouveau projet -> submit */
-   function submitFormAddProj()
-   {  
+   function submitFormAddProj() {
      var data = $("#form-add-projet").serialize();
-     
+
      $.ajax({
 
        type : 'POST',
        url  : '../PHP/projetToBd.php',
        data : data,
-       beforeSend: function()
-       { 
+       beforeSend: function() {
     // $("#error").fadeOut();
     // $("#btn-connexion").html('<span class="glyphicon glyphicon-transfer"></span> &nbsp; Envoi ...');
   },
@@ -320,7 +305,7 @@ submitHandler: false
     $('#addForm').modal('hide');
     $('.modal-backdrop').hide();
                      // $('#myModal').modal({ backdrop: 'static', keyboard: true }) // afficher le modal de fin de modification
-                     // Notification 
+       // Notification
                     $('.bottom-right').notify({
                       message: { text: "Projet ajouté avec succès !" },
                       type: "blackgloss",
@@ -328,20 +313,20 @@ submitHandler: false
                       fadeOut: {
                         delay: 3500
                       }
-                    }).show(); 
+                    }).show();
                     // Notification 
                   var $table = $('#table');
                   refreshTable($table);
 
                    }
                    else {
-
+       alert(response);
     // $('#addForm').modal('hide');
     // $('.modal-backdrop').hide();
                      // $('#myModal').modal({ backdrop: 'static', keyboard: true }) // afficher le modal de fin de modification
 
-                     alert(response);
-                   }  
+
+   }
 
                    if(response.success) {
                     // alert(response);
@@ -360,17 +345,15 @@ submitHandler: false
 
 
    /* Modification d'un nouveau projet -> submit */
-   function submitFormModifyProj()
-   {  
+   function submitFormModifyProj() {
      var data = $("#form-modify-projet").serialize();
-     
+
      $.ajax({
 
        type : 'POST',
        url  : '../PHP/modifyPtoBd.php',
        data : data,
-       beforeSend: function()
-       { 
+       beforeSend: function() {
     // $("#error").fadeOut();
     // $("#btn-connexion").html('<span class="glyphicon glyphicon-transfer"></span> &nbsp; Envoi ...');
   },
@@ -383,7 +366,7 @@ submitHandler: false
     $('.modal-backdrop').hide();
 
 
-                // Notification 
+       // Notification
                 $('.bottom-right').notify({
                   message: { text: "Modifications enregistrées !" },
                   type: "blackgloss",
@@ -391,11 +374,11 @@ submitHandler: false
                   fadeOut: {
                     delay: 3500
                   }
-                }).show(); 
+                }).show();
                     // Notification 
                      var $table = $('#table');
                     refreshTable($table);
-                   }  
+   }
 
                    if(response.success) {
                     alert(response);
@@ -408,12 +391,12 @@ submitHandler: false
       $("#imgload1").html('<img src="../images/load.gif" style="padding-left: 278px !important;" />');
       // setTimeout('window.location.href = "../PHP/home.php"; ',2000); // redirection vers Home
 
-      setTimeout( function(){ 
+ setTimeout( function(){
             $('#contenu').load('addProjet.php');
       }  , 1000 );
 
      }
-     else{     
+ else{
       alert("Vous etes deconnecter !");
       setTimeout('window.location.href = "../PHP/accueil.php"; ',10); // redirection vers Home
 
@@ -429,16 +412,16 @@ submitHandler: false
 
 /* Ajout d'un nouveau partenaire -> submit */
   //  function submitFormAddProj()
-  //  {  
+    //  {
   //    var data = $("#form-add-partenaire").serialize();
-     
-  //    $.ajax({
+
+    //    $.ajax({
 
   //      type : 'POST',
   //      url  : '../PHP/partenaireToBd.php',
   //      data : data,
   //      beforeSend: function()
-  //      { 
+    //      {
   //   // $("#error").fadeOut();
   //   // $("#btn-connexion").html('<span class="glyphicon glyphicon-transfer"></span> &nbsp; Envoi ...');
   // },
@@ -450,7 +433,7 @@ submitHandler: false
   //   $('#addForm').modal('hide');
   //   $('.modal-backdrop').hide();
   //                    // $('#myModal').modal({ backdrop: 'static', keyboard: true }) // afficher le modal de fin de modification
-  //                    // Notification 
+    //                    // Notification
   //                   $('.bottom-right').notify({
   //                     message: { text: "Projet ajouté avec succès !" },
   //                     type: "blackgloss",
@@ -458,8 +441,8 @@ submitHandler: false
   //                     fadeOut: {
   //                       delay: 3500
   //                     }
-  //                   }).show(); 
-  //                   // Notification 
+    //                   }).show();
+    //                   // Notification
   //                 var $table = $('#table');
   //                 refreshTable($table);
 
@@ -471,7 +454,7 @@ submitHandler: false
   //                    // $('#myModal').modal({ backdrop: 'static', keyboard: true }) // afficher le modal de fin de modification
 
   //                    alert(response);
-  //                  }  
+    //                  }
 
   //                  if(response.success) {
   //                   // alert(response);
