@@ -94,9 +94,9 @@ class Projet
 
     }
 
-    public function updateProjet($identifiant, $intitule, $reference, $superficie, $objectif, $consistance, $cout, $maitre, $naturem, $taux, $commune, $situation, $intervention, $naturet, $statut, $convention, $remarques)
+    public function updateProjet($identifiant, $intitule, $reference, $superficie, $objectif, $consistance, $cout, $maitre, $naturem, $taux, $commune, $situation, $intervention, $naturet, $statut, $convention, $remarques, $long, $lat)
     {
-
+        $location = 'POINT(' . $lat . ' ' . $long . ')';
 
         // Test sur les champs requi -------> A adapter apres !!!
         if (empty ($identifiant) || empty ($intitule) || empty ($reference) || empty ($cout) || empty ($taux)) {
@@ -104,10 +104,9 @@ class Projet
             exit;
         }
 
-
         try {
 
-            $stmt = $this->connexion->prepare("UPDATE projet SET  intitule = :b ,reference = :c ,superficie =:d, objectif = :e,consistance =:f, cout = :g, maitre =:h, naturem = :i, taux = :j, commune = :k ,situation = :l, intervention = :m, naturet = :n, statut = :o, convention = :p, remarques = :q WHERE identifiant = :a");
+            $stmt = $this->connexion->prepare("UPDATE projet SET  intitule = :b ,reference = :c ,superficie =:d, objectif = :e,consistance =:f, cout = :g, maitre =:h, naturem = :i, taux = :j, commune = :k ,situation = :l, intervention = :m, naturet = :n, statut = :o, convention = :p, remarques = :q, localisation = GeomFromText(:r) WHERE identifiant = :a");
 
             $stmt->bindparam(":a", $identifiant, PDO::PARAM_STR);
             $stmt->bindparam(":b", $intitule, PDO::PARAM_STR);
@@ -126,6 +125,7 @@ class Projet
             $stmt->bindparam(":o", $statut, PDO::PARAM_STR);
             $stmt->bindparam(":p", $convention, PDO::PARAM_STR);
             $stmt->bindparam(":q", $remarques, PDO::PARAM_STR);
+            $stmt->bindparam(":r", $location);
             $stmt->execute();
             return $stmt;
         } catch (PDOException $ex) {
@@ -136,7 +136,7 @@ class Projet
 
     public function getAllProjects($limit, $offset, $sortParam, $orderType, $search)
     {
-        if ($search == null) $sql = 'SELECT  `identifiant`, `intitule`, `reference`, `superficie`, `objectif`, `consistance`, `cout`, `maitre`, `naturem`, `taux`, `commune`, `situation`, `intervention`, `naturet`, `statut`, `convention`, `remarques`, X(localisation), Y(localisation)   FROM projet ORDER BY ' . $sortParam . ' ' . $orderType . ' Limit :start, :limit ';
+        if ($search == null) $sql = 'SELECT  `identifiant`, `intitule`, `reference`, `superficie`, `objectif`, `consistance`, `cout`, `maitre`, `naturem`, `taux`, `commune`, `situation`, `intervention`, `naturet`, `statut`, `convention`, `remarques`, X(localisation) as Lx, Y(localisation) as Ly   FROM projet ORDER BY ' . $sortParam . ' ' . $orderType . ' Limit :start, :limit ';
         else  $sql = 'SELECT `identifiant`, `intitule`, `reference`, `superficie`, `objectif`, `consistance`, `cout`, `maitre`, `naturem`, `taux`, `commune`, `situation`, `intervention`, `naturet`, `statut`, `convention`, `remarques`, X(localisation), Y(localisation) FROM projet WHERE 
 				identifiant LIKE \'%' . $search . '%\' OR 
 			intitule LIKE \'%' . $search . '%\' OR

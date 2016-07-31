@@ -9,7 +9,7 @@ $projet = new Projet();
   {
 
 
-  // check that all POST variables have been set
+    // check that all POST variables have been set
   // if(!post($_POST['method']) ) exit;
   // if(!post($_POST['value']) ) exit;
   // if(!post($_POST['target'])) exit;
@@ -25,12 +25,13 @@ $projet = new Projet();
  //|| isset($_POST['intitule']) || isset($_POST['reference']) || isset($_POST['cout']) 
     // echo "--->".$post('conventionY')."----";
 
-
-    $result = $projet->updateProjet(post('identifiant'), post('intitule'), post('reference'), post('superficie'), post('objectif'), post('consistance'), post('cout'), post('maitre'),post('naturem'), post('taux'), post('commune'), post('situation'), post('intervention'), post('naturet'), post('statut'),post('conventionYe'),post('remarques') ) ;
+    $result = $projet->updateProjet(post('identifiant'), post('intitule'), post('reference'), post('superficie'), post('objectif'), post('consistance'), post('cout'), post('maitre'), post('naturem'), post('taux'), post('commune'), post('situation'), post('intervention'), post('naturet'), post('statut'), post('conventionYe'), post('remarques'), post('long'), post('lat'));
 
 	 // echo "connected"; // message recuperé dans le scriptLogin.js avec ajax
     if($result){
       echo "Projet modifé avec succes !";
+    } else {
+      alert("Erruer");
     }
   }
   

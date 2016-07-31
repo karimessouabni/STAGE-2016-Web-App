@@ -191,48 +191,45 @@ $('document').ready(function() {
     });
 
 
-
-
-
-
-   //  /* validation  formulaire d'ajout de partenaire */
-
-
+    //
+    //   /* validation  formulaire d'ajout de partenaire */
+    //
+    //
    //  $("#form-add-partenaire").validate({
-    //   errorClass: "alert alert-danger",
+    //    errorClass: "alert alert-danger",
    //   errorElement: "i",
    //   wrapper: "div",  // a wrapper around the error message
-
+    //
    //   rules:
-    //   {
+    //    {
    //     nom: {
    //      required: true,
    //    },
-
+    //
    //    SommeV: {
    //      required: true,
    //      number: true
    //    },
-
+    //
    //     SommeT: {
    //      required: true,
    //      number: true
    //    },
-
-
+    //
+    //
    // },
-
-
+    //
+    //
    // messages:
    // {
    //  nom: "nom du partenaire non fourni ! ",
    //  SommeV: "Somme versée necessaire ! ",
    //  SommeV: "Somme totale necessaire! ",
    //        },
-
-
-    //        submitHandler: submitFormAddPartenaire
-    //      });
+    //
+    //
+    //         submitHandler: submitFormAddPartenaire
+    //       });
 
 
 
@@ -385,86 +382,68 @@ $('document').ready(function() {
 
 
                   }
-/*
-     if(response=="connected"){
-      $("#button1s").html('<span class="glyphicon glyphicon-transfer"></span>&nbsp; Envoi en cours ...');
-      $("#imgload1").html('<img src="../images/load.gif" style="padding-left: 278px !important;" />');
-      // setTimeout('window.location.href = "../PHP/home.php"; ',2000); // redirection vers Home
 
- setTimeout( function(){
-            $('#contenu').load('addProjet.php');
-      }  , 1000 );
-
-     }
- else{
-      alert("Vous etes deconnecter !");
-      setTimeout('window.location.href = "../PHP/accueil.php"; ',10); // redirection vers Home
-
-     }
-
-
-     */
    }
  });
      return false;
    }
 
-
-/* Ajout d'un nouveau partenaire -> submit */
-  //  function submitFormAddProj()
-    //  {
-  //    var data = $("#form-add-partenaire").serialize();
-
-    //    $.ajax({
-
-  //      type : 'POST',
-  //      url  : '../PHP/partenaireToBd.php',
-  //      data : data,
-  //      beforeSend: function()
-    //      {
-  //   // $("#error").fadeOut();
-  //   // $("#btn-connexion").html('<span class="glyphicon glyphicon-transfer"></span> &nbsp; Envoi ...');
-  // },
-  // success : function(response)
-  // {
-  //  if( response == "Yes") {
-
-
-  //   $('#addForm').modal('hide');
-  //   $('.modal-backdrop').hide();
-  //                    // $('#myModal').modal({ backdrop: 'static', keyboard: true }) // afficher le modal de fin de modification
-    //                    // Notification
-  //                   $('.bottom-right').notify({
-  //                     message: { text: "Projet ajouté avec succès !" },
-  //                     type: "blackgloss",
-  //                     closable : true,
-  //                     fadeOut: {
-  //                       delay: 3500
-  //                     }
-    //                   }).show();
-    //                   // Notification
-  //                 var $table = $('#table');
-  //                 refreshTable($table);
-
-  //                  }
-  //                  else {
-
-  //   // $('#addForm').modal('hide');
-  //   // $('.modal-backdrop').hide();
-  //                    // $('#myModal').modal({ backdrop: 'static', keyboard: true }) // afficher le modal de fin de modification
-
-  //                    alert(response);
-    //                  }
-
-  //                  if(response.success) {
-  //                   // alert(response);
-  //                   alert("popo");
-  //                 }
-
-  //               }
-  //             });
-  //    return false;
-  //  }
+//
+// /* Ajout d'un nouveau partenaire -> submit */
+//    function submitFormAddPartenaire()
+//      {
+//      var data = $("#form-add-partenaire").serialize();
+//
+//        $.ajax({
+//
+//        type : 'POST',
+//        url  : '../PHP/partenairdeToBd.php',
+//        data : data,
+//        beforeSend: function()
+//          {
+//     // $("#error").fadeOut();
+//     // $("#btn-connexion").html('<span class="glyphicon glyphicon-transfer"></span> &nbsp; Envoi ...');
+//   },
+//   success : function(response)
+//   {
+//    if( response == "Yes") {
+//
+//
+//     // $('#addForm').modal('hide');
+//     // $('.modal-backdrop').hide();
+//                      // $('#myModal').modal({ backdrop: 'static', keyboard: true }) // afficher le modal de fin de modification
+//                        // Notification
+//                     $('.bottom-right').notify({
+//                       message: { text: "Partenaire ajouté avec succès !" },
+//                       type: "blackgloss",
+//                       closable : true,
+//                       fadeOut: {
+//                         delay: 3500
+//                       }
+//                       }).show();
+//                       // Notification
+//                   // var $table = $('#table');
+//                   // refreshTable($table);
+//
+//                    }
+//                    else {
+//
+//     // $('#addForm').modal('hide');
+//     // $('.modal-backdrop').hide();
+//                      // $('#myModal').modal({ backdrop: 'static', keyboard: true }) // afficher le modal de fin de modification
+//
+//                      alert(response);
+//                      }
+//
+//                    if(response.success) {
+//                     // alert(response);
+//                     alert("popo");
+//                   }
+//
+//                 }
+//               });
+//      return false;
+//    }
 
 
 

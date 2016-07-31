@@ -2,14 +2,6 @@ var features = new ol.Collection();
 var source = new ol.source.Vector({features: features});
 
 
-//create icon at new map center
-var iconFeature2 = new ol.Feature({
-    geometry: new ol.geom.Point(ol.proj.transform([-72.0704, 46.678], 'EPSG:4326',
-        'EPSG:3857')),
-});
-
-
-source.addFeature(iconFeature2);
 
 
 
@@ -29,6 +21,7 @@ var vector = new ol.layer.Vector({
 });
 
 var lastFeature;
+var lastFeature2;
 
 
 /**
@@ -49,11 +42,6 @@ var meknes = ol.proj.fromLonLat([-5.5, 33.9]);
 var fes = ol.proj.fromLonLat([-4.9998000, 34.0371500]);
 var agadir = ol.proj.fromLonLat([-9.5981500, 30.4201800]);
 var rabat = ol.proj.fromLonLat([-6.8325500, 34.0132500]);
-
-
-var removeLastFeature = function () {
-    if (lastFeature) source.removeFeature(lastFeature);
-};
 
 
 /**
@@ -118,7 +106,7 @@ function addInteraction() {
     });
 
     draw.on('drawend', function (e) {
-        removeLastFeature();
+        source.clear();
         lastFeature = e.feature;
     });
 
@@ -131,6 +119,12 @@ function addInteraction() {
         var lat = lonlat[1];
         document.getElementById('long').value = lon;
         document.getElementById('lat').value = lat;
+
+        $('#editForm').find('#long').attr('value', lon);
+        $('#editForm').find('#lat').attr('value', lat);
+        $('#addForm').find('#long').attr('value', lon);
+        $('#addForm').find('#lat').attr('value', lat);
+
         console.log(lon + " " + lat);
     });
 
@@ -174,8 +168,25 @@ function drawMap() {
 }
 
 function drawMapEditForm() {
+
+    long = parseFloat($('#editForm').find('#long').val());
+    lat = parseFloat($('#editForm').find('#lat').val());
+    var posActuelle = ol.proj.fromLonLat([long, lat]);
+    lastFeature2 = new ol.Feature({
+
+        geometry: new ol.geom.Point(ol.proj.transform([long, lat], 'EPSG:4326',
+            'EPSG:3857')),
+
+    });
+
+
+    source.clear();
+    source.addFeature(lastFeature2);
+
     map.setTarget("map2");
+    map.getView().setCenter(posActuelle);
     map.updateSize();
+
 }
 
 
