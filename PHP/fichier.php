@@ -1,87 +1,92 @@
-<?php 
-session_start() ;
-$_SESSION['monnom'] = $_POST['monnom'];  // recuperation du nom deja saisie et laissé dans la case nom comme variable de session
-
-?>
 <?php
-/*
- * AUSU jQuery-Ajax Autosuggest v1.0
- * Demo of a simple server-side request handler
- * Note: This is a very cumbersome code and should only be used as an example
+/**
+ * Created by PhpStorm.
+ * User: karim
+ * Date: 01/08/2016
+ * Time: 08:50
  */
 
-# Establish DB Connection
 
+require_once 'ConnexionConfig.php';    // pour se connecter
 
-   // connexion a la BD
-   include_once './includes/cnx.php' ;
-  //requete 
-
-                   
-
-# Assign local variables
-
-$id     =   @$_POST['id'];          // The id of the input that submitted the request.
-$data   =   @$_POST['data'];        // The value of the textbox.
-$oui =$_COOKIE["nom_cookie"] ;
-
-$remplis =  $_SESSION['remplis'] ; 
-
-echo " recherche de personnel avec le nom suivant : ".$_SESSION['monnom']  ;
-echo 'Le cookie existe ' . $_COOKIE["nom_cookie"] . '!<br />'; 
-if ($id && $data)
+class Fichier
 {
-  if ($id=='prenom')
-  
 
-                                {   
-                                    session_start();
-                                    $mnnom =  $_SESSION['monnom'] ; 
+    private $connexion;
+
+    public function __construct()
+    {
+        $database = new ConnexionConfig();
+        $db = $database->dbConnection();
+        $this->connexion = $db;
+
+    }
 
 
-                                     $query  = "SELECT id,civilite,nom,prenom
-                                              FROM personnel
-                                              WHERE prenom LIKE '$data%' and nom='$oui' 
-                                              ";
+    public function getConnexion()
+    {
+        return $this->connexion;
+    }
 
-                                    $result = mysql_query($query);
 
-                                    $dataList = array();
+    // function to escape data and strip tags
 
-                                    while ($row = mysql_fetch_array($result))
-                                    {
-                                        $toReturn   = $row['nom'];
-                                        $dataList[] = '<table  style="background-color:black;" width =100 border="4"> 
-                                        <tr> <li id="' .$row['id'] . '"><a href="#">' . htmlentities($toReturn) . '</a></li>
-                                            <td width=40> Civilite<td/>
-                                            <td width=400> Prenom<td/>
-                                            <td width=400> Unite<td/>
-                                            <td width=400> Fonction<td/>
-                                        </tr>
-                                        
-                                        <tr>
-                                           <td width=400> '.$row['nom'].'<td/>
-                                            <td width=400> '.$row['prenom'].'<td/>
-                                            <td width=400> '.$row['mail'].'<td/>
-                                           
-                                        </tr>
-                                            </table> ';
-                                    }
+    public function totalrows()
+    {
+        $sql = 'SELECT * FROM fichier ';
+        $sth = $this->connexion->prepare($sql);
+        $sth->execute();
+        $returnValue = $sth->fetchAll(PDO::FETCH_ASSOC);
+        return $sth->rowCount();
 
-                                    if (count($dataList)>0)
-                                    {
-                                        $dataOutput = join("\r\n", $dataList);
-                                        echo $dataOutput;
-                                    }
-                                    else
-                                    {
-                                        echo '<li><a href="#">No Results</a></li>';
-                                    }
-                                }
+
+    }
+
+    public function insertInto($fileName, $id)
+    {
+
+        $this->connexion->query("INSERT INTO fichier (nom, dateTel, projet_id) VALUES('" . $fileName . "','" . date("Y-m-d H:i:s") . "','" . $id . "')");
+
+    }
+
+    public function getFileByProj($idProjet)
+    {
+        $idProjet = $this->safestrip($idProjet);
+
+
+        $sql = 'SELECT `id`,`nom` as nomChiffre, SUBSTRING(`nom`, 11) as nom, `dateTel`, `projet_id` FROM fichier WHERE projet_id=:id';
+        $sth = $this->connexion->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute(array(":id" => $idProjet));
+
+
+        $returnValue = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+        return $returnValue;
+
+    }
+
+    public function safestrip($string)
+    {
+        $string = strip_tags($string);
+        return $string;
+    }
+
+    public function supprimer($identifiant)
+    {
+        $sql = 'DELETE FROM fichier WHERE id=:id';
+        $sth = $this->connexion->prepare($sql);
+        $count = $sth->execute(array(":id" => $identifiant));
+
+
+        if ($count > 0) // si l'user existe
+        {
+            echo $identifiant . "Identifiant Supprimé";
+            exit;
+        } else {
+            echo "ERREUR : Identifiant non Supprimé";
+            exit;
+        }
+    }
+
+
 }
-    else
-{
-    echo 'Request Error';
-}
-
-?>

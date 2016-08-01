@@ -93,10 +93,9 @@ class Partenaire
 	public function updatePartenaire($nom, $sommeV, $sommeT, $identifiant)
 	{
 
-
 		// Test sur les champs requi -------> A adapter apres !!!
 		if (empty ($nom)) {
-			echo "nom non fourni!";
+			echo "nom non fourni !";
 			exit;
 		}
 

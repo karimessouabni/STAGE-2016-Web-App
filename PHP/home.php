@@ -24,19 +24,18 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     <meta name="viewport" contenu="width=device-width, initial-scale=1">
 
 
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
 
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="../bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
 
     <link href="../css/home.css" rel="stylesheet" type="text/css">
 
-    <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
-    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
-    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-1.11.3-jquery.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <!--    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">-->
 
 
     <script src="../js/jquery.bootstrap-autohidingnavbar.js"></script>

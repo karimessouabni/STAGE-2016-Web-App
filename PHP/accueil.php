@@ -19,17 +19,18 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/sLogin.css">
+      <script src="../js/jquery-1.11.3.js"></script>
+
+      <script src="../js/jquery-ui.js"></script>
+
+
+      <link rel="stylesheet" type="text/css" href="../css/sLogin.css">
     <link rel="stylesheet" type="text/css" href="../css/styleWizardInscription.css">
     <link rel="stylesheet" type="text/css" href="../css/dropzone.css">
-    
-    
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+
+      <script src="../bootstrap/js/bootstrap.min.js"></script>
 
 <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="../bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen"> 
@@ -177,7 +178,7 @@ input[type="password"]:focus,
         console.log("File progress", progress);
       });
     }
-  }
+  };
 
 
 
