@@ -65,9 +65,10 @@ This web application is divided into a set of these three main components, each 
 
 A PHP class with multiples functions using SQL queries to retrieve information from the database (for each model there is a table on the database). The model is in charge of giving the controller a data representation of whatever the user requested. The model directly manages the data and the rules of this application. It contains the most important part of this application’s logic, the logic that applies to the problems we’ve been dealing with.
 
+###The Model:###
+A PHP class with multiples functions using SQL queries to retrieve information from the database (for each model there is a table on the database). The model is in charge of giving the controller a data representation of whatever the user requested. The model directly manages the data and the rules of this application. It contains the most important part of this application’s logic, the logic that applies to the problems we’ve been dealing with.
 
 ###The Controller:###
-
 A PHP file that manages the logic of the code that makes decisions. This is somehow the intermediary between the model and the view. Its main function is to call and coordinate the necessary resources/objects needed to perform the user action (received as HTTP GET or POST requests when the user clicks on some elements on the view). Usually the controller will call the appropriate Model for the task and then selects the proper view to render the request’s result.
 In this project the web and the mobile application share the same Controller. Which makes it
 linked to two views in the same time and deciding between both of them. It also determines if
@@ -80,3 +81,16 @@ Present data to the user in any supported format and layout, e.g.:a map, a form,
 - Learning about changes in model data through the application’s controller;
 - Communicating user-initiated changes—for example, text entered in a text field—
 through controller to the application’s model.
+
+
+
+###Managing access rights:###
+This was made on the different controllers of this application, using PHP Sessions. It’s a way to hold information about one single user, to be used across the different application pages.
+How it works:
+Once the user is correctly connected on the application, a new session is started, then PHP
+generates a unique number that will be used on the different application pages. This number
+will identify the connected user.
+
+
+
+
