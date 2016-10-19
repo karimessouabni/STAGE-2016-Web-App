@@ -3,7 +3,7 @@
 
 ##The interfaces##
 
-![]({{site.baseurl}}/http://farm6.staticflickr.com/5564/30341354171_4c9cdcb45e_b.jpg)
+![alt tag](http://farm6.staticflickr.com/5564/30341354171_4c9cdcb45e_b.jpg)
 
 ###Home Page:###
 
@@ -96,7 +96,7 @@ Then when the user chooses to disconnect from the application or closes the brow
 
 ###Forms verification and validation:###
 
-![]({{site.baseurl}}/http://farm6.staticflickr.com/5575/29796029553_1e095e0a51_b.jpg)
+![alt tag](http://farm6.staticflickr.com/5575/29796029553_1e095e0a51_b.jpg)
 Each form in this web application implements a technology called “jQuery validating
 form”. A JavaScript file using Ajax is what we have used to control the data stream going towards
 the controller from the view. This file represents an abstract piece between the controller and the view and it’s divided into two parts:
