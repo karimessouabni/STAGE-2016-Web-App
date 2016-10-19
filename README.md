@@ -90,7 +90,25 @@ How it works:
 Once the user is correctly connected on the application, a new session is started, then PHP
 generates a unique number that will be used on the different application pages. This number
 will identify the connected user.
+Then when the user chooses to disconnect from the application or closes the browser, the previous session will be destroyed. Thus, the controllers will redirect all the url to the homepage, until having a new connected user.
+
+###Forms verification and validation:###
+
+![]({{site.baseurl}}//Capture%20d%E2%80%99e%CC%81cran%202016-08-22%20a%CC%80%2021.40.53.png)
+Each form in this web application implements a technology called “jQuery validating
+form”. A JavaScript file using Ajax is what we have used to control the data stream going towards
+the controller from the view. This file represents an abstract piece between the controller and the view and it’s divided into two parts:
+
+1. The verification part: this is where forms fields that requires verification are validated.
+And whether a field contains an error, a message is displayed on the view to alert the user.
+2. The submit part: Once the verification is successfully done, the submit section takes in charge sending data to the controller. Then, returns a success or a failure message to the view.
 
 
+
+###Object-oriented programming using PHP Data Objects:###
+
+Composed of multiples PHP Classes, the development was achieved based on the concept of
+"objects". With the aim for extensibility and code reuse.
+We have also used PDO which is a PHP extension that allows a database programming with an object-oriented style. It greatly facilitates the migration from one Database Management System to another, or even simultaneous or alternating use of multiple Database Management System with the same PHP code. It also makes the code more secure and cleaner. PDO also has multiple consistent methods of error handling, which have end up saving us loads of time while tracking down issues.
 
 
