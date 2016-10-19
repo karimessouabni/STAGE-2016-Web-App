@@ -49,9 +49,9 @@ An interface (Figure 4) showing all the project information allowing the user to
 Because animations and transitions make a better interactivity between the different interfaces
 and the user. Css and jQuery were used to achieve and make a rich user experience. E.g.:
 
--Fade-in and fade-out field: To show notifications or error messages while the user is
+- Fade-in and fade-out field: To show notifications or error messages while the user is
 filling out with an incorrect syntax the different fields of the earlier cited forms;
 
--Form Vibration: Triggered when the user submits a forms with an invalid email or a
+- Form Vibration: Triggered when the user submits a forms with an invalid email or a
 wrong password.
 
