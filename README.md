@@ -55,3 +55,28 @@ filling out with an incorrect syntax the different fields of the earlier cited f
 - Form Vibration: Triggered when the user submits a forms with an invalid email or a
 wrong password.
 
+
+##MVC architecture##
+
+The development of this web application was based on an Architectural pattern called MVC. MVC describes a way to better structure the application’s code. It helps with a clear division between responsibilities and a better maintainability, code-reuse, and testing.
+This web application is divided into a set of these three main components, each one in charge of different tasks (Figure 5). Let's see a detailed explanation of each one:
+
+###The Model:###
+
+A PHP class with multiples functions using SQL queries to retrieve information from the database (for each model there is a table on the database). The model is in charge of giving the controller a data representation of whatever the user requested. The model directly manages the data and the rules of this application. It contains the most important part of this application’s logic, the logic that applies to the problems we’ve been dealing with.
+
+
+###The Controller:###
+
+A PHP file that manages the logic of the code that makes decisions. This is somehow the intermediary between the model and the view. Its main function is to call and coordinate the necessary resources/objects needed to perform the user action (received as HTTP GET or POST requests when the user clicks on some elements on the view). Usually the controller will call the appropriate Model for the task and then selects the proper view to render the request’s result.
+In this project the web and the mobile application share the same Controller. Which makes it
+linked to two views in the same time and deciding between both of them. It also determines if
+a visitor has the right to view the page or not by managing access rights.
+
+###The View:###
+Present data to the user in any supported format and layout, e.g.:a map, a form, or a table. It contains essentially HTML code. its main role is about:
+
+- Displaying data coming from the application’s model;
+- Learning about changes in model data through the application’s controller;
+- Communicating user-initiated changes—for example, text entered in a text field—
+through controller to the application’s model.
