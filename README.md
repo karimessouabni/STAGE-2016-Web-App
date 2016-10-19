@@ -33,3 +33,25 @@ them in a linear form
 - Retrieving projects information from the database using a server side pagination: this
  means that the user can choose the number of projects to show per page. Thus, table page navigation is modified dynamically to be adapted with the previous choice
 - 3 buttons: to add edit and remove projects
+
+
+
+
+
+###Adding a new Project to the Database:###
+A form splitted on multiples pages appears on a new window. Thus, the user could add a new
+project, filling out several information like project name, price and localization.
+
+###Editing an existing Project on the Database:###
+An interface (Figure 4) showing all the project information allowing the user to edit any project listed on the table. In addition to that, he can easily add, modify or remove a bunch of new information related to the project mentioned before, like visits, partners and files.
+
+###Animations and transitions between pages###
+Because animations and transitions make a better interactivity between the different interfaces
+and the user. Css and jQuery were used to achieve and make a rich user experience. E.g.:
+
+-Fade-in and fade-out field: To show notifications or error messages while the user is
+filling out with an incorrect syntax the different fields of the earlier cited forms;
+
+-Form Vibration: Triggered when the user submits a forms with an invalid email or a
+wrong password.
+
