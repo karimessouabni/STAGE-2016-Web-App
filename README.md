@@ -4,6 +4,7 @@
 ##The interfaces##
 
 ###Home Page:###
+
 The first part developed of this application represent the Home page. And it contains 3 forms.
   - The connection form: where the user sign-in with his email and password to
 authenticate and get access to the main page.
@@ -14,7 +15,8 @@ information required.
 
 
 
-Main Page:
+###Main Page:###
+
 Once a user is logged-in, he gets access to the main page. This page involves 2 Menus; one on the top and a side navigation bar on the right, allowing organizing and designing navigation structure.
 
 Using those menus, users will have access to the different parts of this Applications. While
