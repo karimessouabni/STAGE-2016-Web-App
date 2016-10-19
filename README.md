@@ -3,6 +3,8 @@
 
 ##The interfaces##
 
+![]({{site.baseurl}}/http://farm6.staticflickr.com/5564/30341354171_4c9cdcb45e_b.jpg)
+
 ###Home Page:###
 
 The first part developed of this application represent the Home page. And it contains 3 forms.
