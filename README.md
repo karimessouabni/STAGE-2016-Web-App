@@ -94,7 +94,7 @@ Then when the user chooses to disconnect from the application or closes the brow
 
 ###Forms verification and validation:###
 
-![]({{site.baseurl}}//Capture%20d%E2%80%99e%CC%81cran%202016-08-22%20a%CC%80%2021.40.53.png)
+![]({{site.baseurl}}/http://farm6.staticflickr.com/5575/29796029553_1e095e0a51_b.jpg)
 Each form in this web application implements a technology called “jQuery validating
 form”. A JavaScript file using Ajax is what we have used to control the data stream going towards
 the controller from the view. This file represents an abstract piece between the controller and the view and it’s divided into two parts:
@@ -110,5 +110,3 @@ And whether a field contains an error, a message is displayed on the view to ale
 Composed of multiples PHP Classes, the development was achieved based on the concept of
 "objects". With the aim for extensibility and code reuse.
 We have also used PDO which is a PHP extension that allows a database programming with an object-oriented style. It greatly facilitates the migration from one Database Management System to another, or even simultaneous or alternating use of multiple Database Management System with the same PHP code. It also makes the code more secure and cleaner. PDO also has multiple consistent methods of error handling, which have end up saving us loads of time while tracking down issues.
-
-
