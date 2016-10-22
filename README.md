@@ -5,6 +5,8 @@
 
 ![alt tag](http://farm6.staticflickr.com/5564/30341354171_4c9cdcb45e_b.jpg)
 
+
+![Alt text](http://i.giphy.com/VbflcV7Vl4TQY.gif "Animation 1")
 ###Home Page:###
 
 The first part developed of this application represent the Home page. And it contains 3 forms.
