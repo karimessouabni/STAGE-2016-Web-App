@@ -1,12 +1,11 @@
 # Project management software : A Web Application developed in Angular 2  #
 
-
-##The interfaces##
-
 ![alt tag](http://farm6.staticflickr.com/5564/30341354171_4c9cdcb45e_b.jpg)
 
 
-![Alt text](http://i.giphy.com/VbflcV7Vl4TQY.gif "Animation 1")
+##The interfaces##
+
+
 ###Home Page:###
 
 The first part developed of this application represent the Home page. And it contains 3 forms.
@@ -58,6 +57,9 @@ filling out with an incorrect syntax the different fields of the earlier cited f
 
 - Form Vibration: Triggered when the user submits a forms with an invalid email or a
 wrong password.
+
+![Alt text](http://i.giphy.com/VbflcV7Vl4TQY.gif "Animation 1")
+![Alt text](http://i.giphy.com/QcEivBeLOY1DG.gif "Animation 2")
 
 
 ##MVC architecture##
