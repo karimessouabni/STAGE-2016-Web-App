@@ -68,10 +68,6 @@ The development of this web application was based on an Architectural pattern ca
 This web application is divided into a set of these three main components, each one in charge of different tasks (Figure 5). Let's see a detailed explanation of each one:
 
 ###The Model:###
-
-A PHP class with multiples functions using SQL queries to retrieve information from the database (for each model there is a table on the database). The model is in charge of giving the controller a data representation of whatever the user requested. The model directly manages the data and the rules of this application. It contains the most important part of this application’s logic, the logic that applies to the problems we’ve been dealing with.
-
-###The Model:###
 A PHP class with multiples functions using SQL queries to retrieve information from the database (for each model there is a table on the database). The model is in charge of giving the controller a data representation of whatever the user requested. The model directly manages the data and the rules of this application. It contains the most important part of this application’s logic, the logic that applies to the problems we’ve been dealing with.
 
 ###The Controller:###
